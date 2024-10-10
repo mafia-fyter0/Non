@@ -47,7 +47,7 @@ def start_script():
     thread.daemon = True  
     thread.start()
 
-schedule.every(1).(link unavailable)("00:00").do(start_script)  
+schedule.every().day.at("00:00").do(start_script)  
 
 if __name__ == "__main__":
     app.run(port=5000)
