@@ -1,18 +1,16 @@
-const express = require('express');
-const app = express();
+from flask import Flask, request
 
-app.post('/start', (req, res) => {
-  // Start script ka code yahaan likhein
-  console.log('Script started');
-  res.send('Script started');
-});
+app = Flask(__name__)
 
-app.post('/stop', (req, res) => {
-  // Stop script ka code yahaan likhein
-  console.log('Script stopped');
-  res.send('Script stopped');
-});
+@app.route('/start', methods=['POST'])
+def start_script():
+    print('Script started')
+    return 'Script started'
 
-app.listen(3000, () => {
-  console.log('Server running on port 3000');
-});
+@app.route('/stop', methods=['POST'])
+def stop_script():
+    print('Script stopped')
+    return 'Script stopped'
+
+if __name__ == '__main__':
+    app.run(port=3000)
